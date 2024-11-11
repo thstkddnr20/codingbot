@@ -4,9 +4,7 @@
 
 import api.AiHandler;
 import bot.Bot;
-import command.CommandListener;
-import command.HintCommand;
-import command.TimeComplexityCommand;
+import command.*;
 import config.BotConfig;
 import config.ConfigHandler;
 import exception.ConfirmFailedException;
@@ -14,20 +12,20 @@ import helper.JdaHelper;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 
+import java.util.List;
+
 public class CodingBot {
     public static void main(String[] args) {
 
         BotConfig config = new ConfigHandler().load();
         Bot bot = new Bot(config);
-        new AiHandler(bot);
+        AiHandler aiHandler = new AiHandler(bot);
+
+        CommandFactory commandFactory = new CommandFactory(aiHandler);
+        List<CommandManager> commands = commandFactory.createCommands();
 
         JDA jda = JDABuilder.createLight(config.getToken())
-                .addEventListeners(new CommandListener(
-                new HintCommand(),
-                new TimeComplexityCommand()
-
-                )
-                        ).build();
+                .addEventListeners(new CommandListener(commands)).build();
 
         //JDA 확인받기
         try {
