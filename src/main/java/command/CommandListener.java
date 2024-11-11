@@ -8,13 +8,12 @@ import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CommandListener extends ListenerAdapter {
 
-    public CommandListener(CommandManager... commandManagers) {
-        listener.addAll(Arrays.asList(commandManagers));
+    public CommandListener(List<CommandManager> commands) {
+        listener.addAll(commands);
     }
 
     private List<CommandManager> listener = new ArrayList<>();
