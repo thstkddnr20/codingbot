@@ -1,10 +1,8 @@
-package api.task;
-
-import api.AiHandler;
+package api;
 
 import java.util.concurrent.Callable;
 
-public abstract class Task implements Callable<String> {
+public class Task implements Callable<String> {
 
     public Task(String option, String prompt) {
         this.option = option;
