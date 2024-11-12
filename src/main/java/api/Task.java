@@ -9,6 +9,11 @@ public class Task implements Callable<String> {
         this.prompt = prompt;
     }
 
+    public Task(String prompt) {
+        this.prompt = prompt;
+        this.option = "";
+    }
+
     private final String option;
     private final String prompt;
 
