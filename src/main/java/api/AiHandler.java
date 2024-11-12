@@ -1,6 +1,7 @@
 package api;
 
 import api.task.HintTask;
+import api.task.Task;
 import bot.Bot;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -20,15 +21,15 @@ public class AiHandler {
     private static Bot bot;
     public static final String API_URL = "https://api.openai.com/v1/chat/completions";
     private static final Integer MAX_TOKENS = 150;
-    private static final ExecutorService THREAD = new ThreadPoolExecutor(2, 3, 600, TimeUnit.SECONDS, new ArrayBlockingQueue<>(2));
+    private static final ExecutorService THREAD_POOL = new ThreadPoolExecutor(2, 3, 600, TimeUnit.SECONDS, new ArrayBlockingQueue<>(2));
 
     public AiHandler(Bot bot) {
         AiHandler.bot = bot;
     }
 
     public String getHint(String address) throws ExecutionException, InterruptedException {
-        HintTask task = new HintTask(address);
-        Future<String> future = THREAD.submit(task);
+        Task task = new HintTask(address);
+        Future<String> future = THREAD_POOL.submit(task);
         return future.get();
     }
 
