@@ -24,7 +24,7 @@ public class HintCommand implements CommandManager {
         event.deferReply().queue();
         OptionMapping option = event.getOption("주소");
         if (option == null) {
-            event.reply("주소를 입력해주세요").queue();
+            event.getHook().sendMessage("주소를 입력해주세요").queue();
             return;
         }
         String address = option.getAsString();
