@@ -4,6 +4,8 @@ import api.AiHandler;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 
+import java.util.concurrent.CompletableFuture;
+
 public class HintCommand implements CommandManager {
 
     private final AiHandler aiHandler;
@@ -19,6 +21,7 @@ public class HintCommand implements CommandManager {
 
     @Override
     public void execute(SlashCommandInteractionEvent event) {
+        event.deferReply().queue();
         OptionMapping option = event.getOption("주소");
         if (option == null) {
             event.reply("주소를 입력해주세요").queue();
@@ -26,7 +29,14 @@ public class HintCommand implements CommandManager {
         }
         String address = option.getAsString();
 
-        String result = aiHandler.getHint(address);
-        event.reply(result).queue();
+        CompletableFuture.supplyAsync(() -> {
+            return aiHandler.getHint(address);
+        }).thenAccept(result -> {
+            event.getHook().sendMessage(result).queue();
+        }).exceptionally(throwable -> {
+            event.getHook().sendMessage("작업 수행 중 오류가 발생했습니다").queue();
+            return null;
+        });
+
     }
 }
