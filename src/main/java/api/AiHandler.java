@@ -1,5 +1,7 @@
 package api;
 
+import api.entity.Option;
+import api.entity.Prompt;
 import bot.Bot;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -26,7 +28,7 @@ public class AiHandler {
     }
 
     public String getHint(String address) throws ExecutionException, InterruptedException {
-        Task task = new Task(address, PromptList.HINT_PROMPT);
+        Task task = new Task(Option.of(address), Prompt.of(PromptList.HINT_PROMPT));
         Future<String> future = THREAD_POOL.submit(task);
         return future.get();
     }
