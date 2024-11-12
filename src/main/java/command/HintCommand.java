@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEve
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 public class HintCommand implements CommandManager {
 
@@ -29,14 +30,12 @@ public class HintCommand implements CommandManager {
         }
         String address = option.getAsString();
 
-        CompletableFuture.supplyAsync(() -> {
-            return aiHandler.getHint(address);
-        }).thenAccept(result -> {
-            event.getHook().sendMessage(result).queue();
-        }).exceptionally(throwable -> {
-            event.getHook().sendMessage("작업 수행 중 오류가 발생했습니다").queue();
-            return null;
-        });
+        try {
+            String hint = aiHandler.getHint(address);
+            event.getHook().sendMessage(hint).queue();
+        } catch (ExecutionException | InterruptedException e) {
+            event.getHook().sendMessage("처리중 오류가 발생했습니다").queue();
+        }
 
     }
 }
