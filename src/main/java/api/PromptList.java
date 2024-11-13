@@ -17,6 +17,12 @@ public class PromptList {
             "Finally, calculate the final time complexity of the code. Answer in Korean. code: ";
 
     public static final String ALGORITHM = "It is your mission to explain the given algorithm in detail. " +
-            "Assume that the questioner knows nothing about the algorithm and explain it in kind and detail with an example. You may attach an example written in code." +
+            "Assume that the questioner knows nothing about the algorithm and explain it in kind and detail with an example. You may attach an example written in code. " +
             "Answer in Korean. Algorithm: ";
+
+    public static final String COUNTER_EXAMPLE = "Please identify a counterexample where the provided URL's coding problem and code do not solve the task correctly. " +
+            "Step 1 (Input). Write an input (counterexample) that causes the code to produce an incorrect result. " +
+            "Step 2 (Incorrect Output). Write the actual output from the code for the input in Step 1. " +
+            "Step 3 (Expected Correct Output). Write the correct expected output for the input in Step 1. " +
+            "Answer in Korean. address and code: ";
 }

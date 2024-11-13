@@ -16,6 +16,9 @@ public class CommandFactory {
                 new HintCommand(aiHandler),
                 new TimeComplexityCommand(aiHandler),
                 new AlgorithmCommand(aiHandler)
+
+
+//                new CounterExampleCommand(aiHandler)
         );
     }
 

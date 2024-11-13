@@ -39,6 +39,10 @@ public class AiHandler {
         return doTask(algorithm, Prompt.of(PromptList.ALGORITHM));
     }
 
+    public String getCounterExample(Option address, Option code) {
+        return doTask(address, code, Prompt.of(PromptList.COUNTER_EXAMPLE));
+    }
+
     public static String requestApi(String prompt) throws IOException {
         URL url = new URL(API_URL);
 
