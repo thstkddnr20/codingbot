@@ -1,10 +1,9 @@
 package command;
 
 import api.AiHandler;
+import api.entity.Option;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
-
-import java.util.concurrent.ExecutionException;
 
 public class HintCommand implements CommandManager {
 
@@ -29,12 +28,7 @@ public class HintCommand implements CommandManager {
         }
         String address = option.getAsString();
 
-        try {
-            String hint = aiHandler.getHint(address);
-            event.getHook().sendMessage(hint).queue();
-        } catch (ExecutionException | InterruptedException e) {
-            event.getHook().sendMessage("처리중 오류가 발생했습니다").queue();
-        }
-
+        String result = aiHandler.getHint(Option.of(address));
+        event.getHook().sendMessage(result).queue();
     }
 }

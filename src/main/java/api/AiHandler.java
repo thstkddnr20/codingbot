@@ -27,16 +27,12 @@ public class AiHandler {
         AiHandler.bot = bot;
     }
 
-    public String getHint(String address) throws ExecutionException, InterruptedException {
-        Task task = new Task(Option.of(address), Prompt.of(PromptList.HINT));
-        Future<String> future = THREAD_POOL.submit(task);
-        return future.get();
+    public String getHint(Option address) {
+        return doTask(address, Prompt.of(PromptList.HINT));
     }
 
-    public String getTimeComplexity(String code) throws ExecutionException, InterruptedException {
-        Task task = new Task(Option.of(code), Prompt.of(PromptList.TIME_COMPLEXITY));
-        Future<String> future = THREAD_POOL.submit(task);
-        return future.get();
+    public String getTimeComplexity(Option code) {
+        return doTask(code, Prompt.of(PromptList.TIME_COMPLEXITY));
     }
 
     public static String requestApi(String prompt) throws IOException {
@@ -82,6 +78,39 @@ public class AiHandler {
                 .getJSONObject(0)
                 .getJSONObject("message")
                 .getString("content");
+    }
+
+    /**
+     * doTask
+     */
+    private String doTask(Option option, Prompt prompt) {
+        Task task = new Task(option, prompt);
+        Future<String> future = THREAD_POOL.submit(task);
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            return "처리중 오류가 발생했습니다";
+        }
+    }
+
+    private String doTask(Prompt prompt) {
+        Task task = new Task(prompt);
+        Future<String> future = THREAD_POOL.submit(task);
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            return "처리중 오류가 발생했습니다";
+        }
+    }
+
+    private String doTask(Option option1, Option option2, Prompt prompt) {
+        Task task = new Task(option1, option2, prompt);
+        Future<String> future = THREAD_POOL.submit(task);
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            return "처리중 오류가 발생했습니다";
+        }
     }
 
 }

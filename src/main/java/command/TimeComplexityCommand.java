@@ -1,10 +1,9 @@
 package command;
 
 import api.AiHandler;
+import api.entity.Option;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
-
-import java.util.concurrent.ExecutionException;
 
 public class TimeComplexityCommand implements CommandManager {
 
@@ -29,12 +28,8 @@ public class TimeComplexityCommand implements CommandManager {
 
         String code = option.getAsString();
 
-        try {
-            String timeComplexity = aiHandler.getTimeComplexity(code);
-            event.getHook().sendMessage(timeComplexity).queue();
-        } catch (ExecutionException | InterruptedException e) {
-            event.getHook().sendMessage("처리중 오류가 발생했습니다").queue();
-        }
+        String result = aiHandler.getTimeComplexity(Option.of(code));
+        event.getHook().sendMessage(result).queue();
 
 
     }
