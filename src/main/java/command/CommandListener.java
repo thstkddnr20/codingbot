@@ -34,7 +34,9 @@ public class CommandListener extends ListenerAdapter {
                 List.of(Commands.slash("힌트", "문제에 대한 힌트를 제공합니다")
                                 .addOption(OptionType.STRING, "주소", "힌트를 받을 문제의 사이트 주소를 입력합니다", true),
                         Commands.slash("시간복잡도", "작성한 코드의 시간복잡도를 계산합니다")
-                                .addOption(OptionType.STRING, "코드", "시간복잡도를 계산할 코드를 입력합니다", true)
+                                .addOption(OptionType.STRING, "코드", "시간복잡도를 계산할 코드를 입력합니다", true),
+                        Commands.slash("알고리즘", "알고리즘에 대한 설명을 받습니다")
+                                .addOption(OptionType.STRING, "알고리즘", "설명을 받을 알고리즘의 이름을 작성합니다", true)
                 )
         );
 

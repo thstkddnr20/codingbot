@@ -15,4 +15,8 @@ public class PromptList {
             "When determining time complexity, consider the worst-case scenario. " +
             "If a function or algorithm contains multiple steps or overlapping loops, give the time complexity of each step and then give the overall time complexity of the function or algorithm. " +
             "Finally, calculate the final time complexity of the code. Answer in Korean. code: ";
+
+    public static final String ALGORITHM = "It is your mission to explain the given algorithm in detail. " +
+            "Assume that the questioner knows nothing about the algorithm and explain it in kind and detail with an example. You may attach an example written in code." +
+            "Answer in Korean. Algorithm: ";
 }
