@@ -7,6 +7,12 @@ package api;
  */
 public class PromptList {
 
-    public static final String HINT_PROMPT = "There are coding problem at the given address and you are a helper who helps you solve coding problem, you should only provide hints. " +
+    public static final String HINT = "There are coding problem at the given address and you are a helper who helps you solve coding problem, you should only provide hints. " +
             "do not answers to the problem and do not make the example for the problem. Answer in KOREAN. address: ";
+
+    public static final String TIME_COMPLEXITY = "It is your mission to analyze the functions or algorithms provided and to calculate time complexity using Big O notation. " +
+            "Explain the reasoning process by step the process of reaching the final time complexity. " +
+            "When determining time complexity, consider the worst-case scenario. " +
+            "If a function or algorithm contains multiple steps or overlapping loops, give the time complexity of each step and then give the overall time complexity of the function or algorithm. " +
+            "Finally, calculate the final time complexity of the code. Answer in Korean. code: ";
 }

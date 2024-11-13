@@ -20,7 +20,7 @@ public class AiHandler {
 
     private static Bot bot;
     public static final String API_URL = "https://api.openai.com/v1/chat/completions";
-    private static final Integer MAX_TOKENS = 150;
+    private static final Integer MAX_TOKENS = 1000;
     private static final ExecutorService THREAD_POOL = new ThreadPoolExecutor(2, 3, 600, TimeUnit.SECONDS, new ArrayBlockingQueue<>(2));
 
     public AiHandler(Bot bot) {
@@ -28,7 +28,13 @@ public class AiHandler {
     }
 
     public String getHint(String address) throws ExecutionException, InterruptedException {
-        Task task = new Task(Option.of(address), Prompt.of(PromptList.HINT_PROMPT));
+        Task task = new Task(Option.of(address), Prompt.of(PromptList.HINT));
+        Future<String> future = THREAD_POOL.submit(task);
+        return future.get();
+    }
+
+    public String getTimeComplexity(String code) throws ExecutionException, InterruptedException {
+        Task task = new Task(Option.of(code), Prompt.of(PromptList.TIME_COMPLEXITY));
         Future<String> future = THREAD_POOL.submit(task);
         return future.get();
     }
