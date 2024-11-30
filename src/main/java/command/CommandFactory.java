@@ -15,7 +15,8 @@ public class CommandFactory {
         return List.of(
                 new HintCommand(aiHandler),
                 new TimeComplexityCommand(aiHandler),
-                new AlgorithmCommand(aiHandler)
+                new AlgorithmCommand(aiHandler),
+                new ImprovementCommand(aiHandler)
 
 
 //                new CounterExampleCommand(aiHandler)

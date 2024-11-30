@@ -25,4 +25,11 @@ public class PromptList {
             "Step 2 (Incorrect Output). Write the actual output from the code for the input in Step 1. " +
             "Step 3 (Expected Correct Output). Write the correct expected output for the input in Step 1. " +
             "Answer in Korean. address and code: ";
+
+    public static final String IMPROVEMENT = "It is your mission to find improvements to the given code. " +
+            "Please analyze the given code and point out the parts that can shorten time, the parts that can reduce memory usage, " +
+            "the parts that can problematic, legibility of code and many other things that can be improved. " +
+            "You must find an improvements in the line that doesn't break the flow of the code. " +
+            "Don't make the example answer of the modified code and don't point out the name of the variable. " +
+            "Don't make such a trivial point, make a big point. Answer in Korean. code: ";
 }

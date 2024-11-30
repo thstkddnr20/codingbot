@@ -43,6 +43,10 @@ public class AiHandler {
         return doTask(address, code, Prompt.of(PromptList.COUNTER_EXAMPLE));
     }
 
+    public String getImprovement(Option code) {
+        return doTask(code, Prompt.of(PromptList.IMPROVEMENT));
+    }
+
     public static String requestApi(String prompt) throws IOException {
         URL url = new URL(API_URL);
 
