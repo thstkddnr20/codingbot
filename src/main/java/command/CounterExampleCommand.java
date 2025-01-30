@@ -5,9 +5,6 @@ import api.entity.Option;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 
-/**
- * 반례를 제대로 만들어 주지 않아 보류한다
- */
 public class CounterExampleCommand implements CommandManager{
 
     private final AiHandler aiHandler;

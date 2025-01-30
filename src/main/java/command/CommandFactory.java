@@ -16,10 +16,10 @@ public class CommandFactory {
                 new HintCommand(aiHandler),
                 new TimeComplexityCommand(aiHandler),
                 new AlgorithmCommand(aiHandler),
-                new ImprovementCommand(aiHandler)
+                new ImprovementCommand(aiHandler),
 
 
-//                new CounterExampleCommand(aiHandler)
+                new CounterExampleCommand(aiHandler)
         );
     }
 

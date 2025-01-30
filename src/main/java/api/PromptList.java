@@ -24,6 +24,7 @@ public class PromptList {
             "Step 1 (Input). Write an input (counterexample) that causes the code to produce an incorrect result. " +
             "Step 2 (Incorrect Output). Write the actual output from the code for the input in Step 1. " +
             "Step 3 (Expected Correct Output). Write the correct expected output for the input in Step 1. " +
+            "If you think there are no counterexamples, say there are none. " +
             "Answer in Korean. address and code: ";
 
     public static final String IMPROVEMENT = "It is your mission to find improvements to the given code. " +
