@@ -33,4 +33,9 @@ public class PromptList {
             "You must find an improvements in the line that doesn't break the flow of the code. " +
             "Don't make the example answer of the modified code and don't point out the name of the variable. " +
             "Don't make such a trivial point, make a big point. Answer in Korean. code: ";
+
+    public static final String EXPLAIN = "Your job is to explain the code. " +
+            "At first, write abstractly where this code is used, and if an algorithms are used, what algorithms they are. " +
+            "and then explain in detail how this code works by numbering it. " +
+            "Answer in Korean. code: ";
 }

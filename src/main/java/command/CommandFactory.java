@@ -19,7 +19,8 @@ public class CommandFactory {
                 new ImprovementCommand(aiHandler),
 
 
-                new CounterExampleCommand(aiHandler)
+                new CounterExampleCommand(aiHandler),
+                new ExplainCommand(aiHandler)
         );
     }
 

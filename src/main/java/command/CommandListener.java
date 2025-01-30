@@ -41,7 +41,9 @@ public class CommandListener extends ListenerAdapter {
                                 .addOption(OptionType.STRING, "주소", "문제의 주소를 입력합니다", true)
                                 .addOption(OptionType.STRING, "코드", "작성한 코드를 입력합니다", true),
                         Commands.slash("개선점", "작성한 코드의 개선할 점을 파악하여 알려줍니다")
-                                .addOption(OptionType.STRING, "코드", "작성한 코드를 입력합니다", true)
+                                .addOption(OptionType.STRING, "코드", "작성한 코드를 입력합니다", true),
+                        Commands.slash("설명", "코드에 대한 설명을 받습니다")
+                                .addOption(OptionType.STRING, "코드", "설명을 받을 코드를 입력합니다", true)
                 )
         );
 
